@@ -8,10 +8,15 @@
 template <class T>
 class List {
 private:
-    T *first, *last;
+    T *array;
+    int size;
+    int capacity;
 
     class Iterator {
-        T* now;
+    private:
+        T* now
+    public:
+        Iterator();
 
         void operator++ ();
         void operator++ (Iterator);
@@ -19,6 +24,9 @@ private:
         T* operator-> ();
     };
 public:
+    List ();
+    List (int capacity);
+
     typedef Iterator iterator;
 
     void insert (T element, int index);
