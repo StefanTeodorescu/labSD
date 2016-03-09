@@ -16,12 +16,13 @@ private:
     private:
         T* now
     public:
-        Iterator();
+        Iterator ();
+        ~Iterator ();
 
-        void operator++ ();
-        void operator++ (Iterator);
-        T& operator* (Iterator);
-        T* operator-> ();
+        void operator ++ ();
+        void operator ++ (Iterator);
+        T& operator * (Iterator);
+        T* operator -> ();
     };
 public:
     List ();
@@ -30,13 +31,13 @@ public:
 
     typedef Iterator iterator;
 
-    void insert (T element, int index);
+    void insert (const T& element, int index);
     void remove (int index);
-    void push_back (T element);
-    void push_front (T element);
+    void push_back (const T& element);
+    void push_front (const T& element);
 
-    Iterator begin ();
-    Iterator end ();
+    iterator begin ();
+    iterator end ();
 };
 
 #endif //LABSD_LISTA_H
