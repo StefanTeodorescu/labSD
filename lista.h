@@ -20,12 +20,13 @@ private:
 
         void operator++ ();
         void operator++ (Iterator);
-        T* operator* (Iterator);
+        T& operator* (Iterator);
         T* operator-> ();
     };
 public:
     List ();
     List (int capacity);
+    ~List ();
 
     typedef Iterator iterator;
 
