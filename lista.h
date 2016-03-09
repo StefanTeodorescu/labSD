@@ -24,8 +24,6 @@ private:
         T& operator * (Iterator);
         T* operator -> ();
     };
-
-    //test
 public:
     List ();
     List (int capacity);
