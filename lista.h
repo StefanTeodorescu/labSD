@@ -14,7 +14,7 @@ private:
 
     class Iterator {
     private:
-        T* now
+        T* now;
     public:
         Iterator ();
         ~Iterator ();
@@ -24,6 +24,8 @@ private:
         T& operator * (Iterator);
         T* operator -> ();
     };
+
+    //test
 public:
     List ();
     List (int capacity);
