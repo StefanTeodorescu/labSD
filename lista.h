@@ -33,14 +33,14 @@ private:
         }
 
         Iterator operator ++ () {
-            const Iterator now = Iterator(array, where);
             where ++;
-            return now;
+            return Iterator(array, where);
         }
 
         Iterator operator ++ (int) {
+            const Iterator now = Iterator(array, where);
             where ++;
-            return Iterator(array, where);
+            return now;
         }
 
         Iterator operator -- () {

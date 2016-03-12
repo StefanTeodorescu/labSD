@@ -17,6 +17,10 @@ int main() {
 //
 //    List<int>::iterator it;
 //    it = v.begin();
+//    cout << *it ++ << " ";
+//    cout << *it;
+//    for (int i = 0; i < 10; i ++)
+//        cout << v[i] << " ";
 //    cout << (it == v.begin()) << "\n";
 //    cout << *it << " ";
 //    it ++;
