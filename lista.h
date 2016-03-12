@@ -9,21 +9,71 @@ using namespace std;
 template <class T>
 class List {
 private:
-    T *array;
+    T* array;
     int size;
     int capacity;
 
     class Iterator {
+        friend class List; //ca sa pot sa fac constructorii private
     private:
-        T* now;
-    public:
-        Iterator();
-        ~Iterator();
+        int where;
+        T* array;
 
-        void operator ++ ();
-        void operator ++ (Iterator);
-        T& operator * (Iterator);
-        T* operator -> ();
+        //am nevoie de referinte catre array ca sa pot returna un element din lista
+        explicit Iterator(const List& L, int where = 0)
+                : array(L.array), where(where)
+        { }
+        explicit Iterator(T* const array, int where = 0)
+                : array(array), where(where)
+        { }
+
+    public:
+        Iterator() {
+            where = 0;
+        }
+
+        Iterator operator ++ () {
+            const Iterator now = Iterator(array, where);
+            where ++;
+            return now;
+        }
+
+        Iterator operator ++ (int) {
+            where ++;
+            return Iterator(array, where);
+        }
+
+        Iterator operator -- () {
+            const Iterator now = Iterator(array, where);
+            where --;
+            return now;
+        }
+
+        Iterator operator -- (int) {
+            where --;
+            return Iterator(array, where);
+        }
+
+        T& operator * () {
+            return array[where];
+        }
+
+        T* operator -> () {
+            return &array[where];
+        }
+
+        void operator = (const Iterator& it) {
+            where = it.where;
+            array = it.array;
+        }
+
+        bool operator != (const Iterator& it) {
+            return array != it.array || where != it.where;
+        }
+
+        bool operator == (const Iterator& it) {
+            return array == it.array && where == it.where;
+        }
     };
 public:
     List()
@@ -127,8 +177,12 @@ public:
         return size;
     }
 
-    iterator begin();
-    iterator end();
+    iterator begin() {
+        return Iterator(*this);
+    }
+    iterator end() {
+        return Iterator(*this, size);
+    }
 };
 
 #endif //LABSD_LISTA_H
