@@ -1,10 +1,10 @@
 //
 // Created by Stefan Teodorescu on 07/03/16.
 //
-#include<iostream>
-using namespace std;
 #ifndef LABSD_LISTA_H
 #define LABSD_LISTA_H
+
+using namespace std;
 
 template <class T>
 class List {
