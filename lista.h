@@ -90,6 +90,7 @@ public:
         }
 
         size++;
+        return 1;
     }
 
     void remove(int index);
@@ -118,7 +119,7 @@ public:
     }
     void push_front(const T& element);
 
-    T operator [] (int index) {
+    T& operator [] (int index) {
         return array[index];
     }
 
