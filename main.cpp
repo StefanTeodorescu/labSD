@@ -6,6 +6,12 @@ using namespace std;
 int main() {
 
 	List<int> v;
-    cout << "Stefan ai fost un lenes si nu ai scris nimic in main, dar noi te iubim si asa!" << "/n";
+    for (int i = 1; i <= 10; i ++) {
+        v.push_back(i);
+    }
+
+    for (int i = 0; i < v.length(); i ++) {
+        cout << v[i] << " ";
+    }
     return 0;
 }

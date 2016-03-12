@@ -17,8 +17,8 @@ private:
     private:
         T* now;
     public:
-        Iterator ();
-        ~Iterator ();
+        Iterator();
+        ~Iterator();
 
         void operator ++ ();
         void operator ++ (Iterator);
@@ -26,21 +26,25 @@ private:
         T* operator -> ();
     };
 public:
-    List ()
+    List()
     {
         this->capacity = 1;
         this->size = 0;
         this->array = new T[capacity];
     }
-    List (int capacity);
-    ~List ()
+    List(int capacity) {
+        this -> capacity = capacity;
+        this -> size = 0;
+        this -> array = new T[capacity];
+    }
+    ~List()
     {
         delete[] array;
     }
 
     typedef Iterator iterator;
     
-    int insert (const T& element, int index)
+    int insert(const T& element, int index)
     {
         int i;
 
@@ -87,8 +91,10 @@ public:
 
         size++;
     }
-    void remove (int index);
-    void push_back (const T& element)
+
+    void remove(int index);
+
+    void push_back(const T& element)
     {
         if (size == capacity)
         {
@@ -110,10 +116,18 @@ public:
         array[size] = element;
         size ++;
     }
-    void push_front (const T& element);
+    void push_front(const T& element);
 
-    iterator begin ();
-    iterator end ();
+    T operator [] (int index) {
+        return array[index];
+    }
+
+    int length() {
+        return size;
+    }
+
+    iterator begin();
+    iterator end();
 };
 
 #endif //LABSD_LISTA_H
