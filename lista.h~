@@ -143,38 +143,7 @@ public:
         return 1;
     }
 
-    void remove(const T& element, unsigned index)
-    {
-        int i;
-
-        if(index > size)
-        {
-            cout<<"Index out of bounds. Please try again!\n";
-            return 0;
-        }
-
-        //Redimensionam vectorul
-        T *new_array;
-        new_array = new T[capacity - 1];
-
-        //Copiem elementele de pana la elementul care trebuie sters 
-        for(i = 0; i < index; i++)
-        {
-            new_array[i] = array[i];
-        }
-
-        //Copiem elementele de dupa elementul ce trebuie sters
-        for(i = index + 1; i < = size; i++)
-        {
-            new_array[i] = array[i];
-        }
-
-        delete[] array;
-        array = new_array;
-        capacity --;
-
-    }
-
+    void remove(int index);
 
     void push_back(const T& element)
     {
@@ -198,28 +167,7 @@ public:
         array[size] = element;
         size ++;
     }
-    void push_front(const T& element)
-    {
-        if( size == capacity)
-        {
-            T *new_array;
-            new_array = new T[capacity + 1];
-
-            //Copiem toate elementele in noul vector, decalate cu o pozitie
-            for(int i = 1; i <= size; i++)
-            {
-                new_array[i] = array[i - 1];
-            }
-
-            delete[] array;
-            array = new_array;
-            capacity = capacity + 1;
-
-            //Adaugam noul element pe pozitia 0
-            array[0] = element;
-            size ++;
-        }
-    }
+    void push_front(const T& element);
 
     T& operator [] (int index) {
         return array[index];
