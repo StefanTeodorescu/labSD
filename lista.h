@@ -94,14 +94,14 @@ public:
 
     typedef Iterator iterator;
     
-    int insert(const T& element, int index)
+    void insert(const T& element, int index)
     {
         int i;
 
         if(index > size + 1)
         {
             cout<<"index out of bounds. Please try again!\n";
-            return 0;
+            return;
         }
         //vrem sa adaugam un element pe pozitia dorita
         if(size == capacity)
@@ -109,7 +109,7 @@ public:
             //in cazul in care elementul nu mai incape in vector, modificam dim vectorului
             
             T *new_array;
-            new_array = new T[capacity+1];
+            new_array = new T[capacity * 2];
 
             //elementele se gasesc in vector incepang cu array[0]
             //pozitia index se va gasi in vector la v[index-1]
@@ -127,7 +127,7 @@ public:
 
             delete[] array;
             array = new_array;
-            capacity++;
+            capacity *= 2;
         }
         else
         {
@@ -140,7 +140,6 @@ public:
         }
 
         size++;
-        return 1;
     }
 
     void remove(const T& element, unsigned index)
@@ -150,29 +149,12 @@ public:
         if(index > size)
         {
             cout<<"Index out of bounds. Please try again!\n";
-            return 0;
+            return;
         }
 
-        //Redimensionam vectorul
-        T *new_array;
-        new_array = new T[capacity - 1];
 
-        //Copiem elementele de pana la elementul care trebuie sters 
-        for(i = 0; i < index; i++)
-        {
-            new_array[i] = array[i];
-        }
 
-        //Copiem elementele de dupa elementul ce trebuie sters
-        for(i = index + 1; i < = size; i++)
-        {
-            new_array[i] = array[i];
-        }
-
-        delete[] array;
-        array = new_array;
-        capacity --;
-
+        size --;
     }
 
 
@@ -181,7 +163,7 @@ public:
         if (size == capacity)
         {
             T *new_array;
-            new_array = new T[capacity+1];
+            new_array = new T[capacity * 2];
         
             for(int i = 0; i < size; i++)
             {
@@ -190,7 +172,7 @@ public:
 
             delete[] array;
             array = new_array;
-            capacity = capacity + 1; 
+            capacity = capacity * 2;
         }
         
         //adaugam noul element
@@ -203,7 +185,7 @@ public:
         if( size == capacity)
         {
             T *new_array;
-            new_array = new T[capacity + 1];
+            new_array = new T[capacity * 2];
 
             //Copiem toate elementele in noul vector, decalate cu o pozitie
             for(int i = 1; i <= size; i++)
@@ -213,12 +195,12 @@ public:
 
             delete[] array;
             array = new_array;
-            capacity = capacity + 1;
-
-            //Adaugam noul element pe pozitia 0
-            array[0] = element;
-            size ++;
+            capacity = capacity * 2;
         }
+
+        //Adaugam noul element pe pozitia 0
+        array[0] = element;
+        size ++;
     }
 
     T& operator [] (int index) {
