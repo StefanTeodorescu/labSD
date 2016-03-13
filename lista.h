@@ -142,17 +142,18 @@ public:
         size++;
     }
 
-    void remove(const T& element, unsigned index)
+    void remove(unsigned index)
     {
-        int i;
-
-        if(index > size)
+       if(index > size)
         {
             cout<<"Index out of bounds. Please try again!\n";
             return;
         }
 
-
+        for( int i = index; i < size; i++)
+        {
+            array[i] = array[i + 1];
+        }
 
         size --;
     }
@@ -194,10 +195,15 @@ public:
             }
 
             delete[] array;
+            new_array[0] = element;
             array = new_array;
             capacity = capacity * 2;
         }
 
+        for(int i = size; i >= 1; i--)
+        {
+            array[i] = array[ i - 1];
+        }
         //Adaugam noul element pe pozitia 0
         array[0] = element;
         size ++;

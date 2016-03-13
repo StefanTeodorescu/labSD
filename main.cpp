@@ -56,6 +56,25 @@ int main() {
 //    for (int i = 0; i < v.length(); i ++) {
 //        cout << v[i] << " ";
 //    }
+	/*List<int> v;
+	int i;
+	for(i = 0; i < 10; i++){
+		v.push_back(i);
+		cout<<v[i]<<" ";
+	}
+	cout << "\n";
+
+	v.remove(3);
+	for( i = 0; i < 9; i++){
+		cout<<v[i]<<" ";
+	}
+
+	cout<<"\n";
+
+	v.push_front(6);
+	for(i=0; i < 10; i++){
+		cout <<v[i]<<" ";
+	}*/
 
     return 0;
 }
