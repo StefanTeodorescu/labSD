@@ -12,6 +12,14 @@ int main() {
 
 //    List<int> v;
 //    for (int i = 1; i <= 10; i ++) {
+//        v.push_front(i);
+//    }
+//    List<int>::iterator it;
+//    for (it = v.begin(); it != v.end(); ++ it){
+//        cout << *it << " ";
+//    }
+//    List<int> v;
+//    for (int i = 1; i <= 10; i ++) {
 //        v.push_back(i);
 //    }
 //

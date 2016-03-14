@@ -188,21 +188,20 @@ public:
             T *new_array;
             new_array = new T[capacity * 2];
 
-            //Copiem toate elementele in noul vector, decalate cu o pozitie
-            for(int i = 1; i <= size; i++)
+            //Copiem toate elementele in noul vector
+            for(int i = 0; i < size; i++)
             {
-                new_array[i] = array[i - 1];
+                new_array[i] = array[i];
             }
 
             delete[] array;
-            new_array[0] = element;
             array = new_array;
             capacity = capacity * 2;
         }
 
         for(int i = size; i >= 1; i--)
         {
-            array[i] = array[ i - 1];
+            array[i] = array[i - 1];
         }
         //Adaugam noul element pe pozitia 0
         array[0] = element;
